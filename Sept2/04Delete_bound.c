@@ -1,18 +1,25 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAXSIZE 100
 
-void Delete_Bound(SqList *L,int s,int t){
-    if(s > t || L->length == 0){
-        printf("EMPTY");
+typedef struct{
+    int data[MAXSIZE];
+    int length;
+}SqList;
+
+int DeleteBound(SqList *L,int s,int t){
+    int k=0;
+    if(L->length == 0 || s >= t){
         return;
+        exit(1);
     }
-    int temp=0;
-    for(int i=0;i<L->length;i++){
-        if(L->data[i] < s || L->data[i] > t){
-            L->data[temp] = L->data[i];
-            temp++;
-        }
-        
 
+    for(int i=0;i<L->length;i++){
+        if(L->data[i] < s && L->data[i] > t){
+            L->data[k] = L->data[i];
+            k++;
+        }
     }
-    L->length = temp;
+    L->length = k;
+
     
-}

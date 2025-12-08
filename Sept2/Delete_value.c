@@ -1,4 +1,4 @@
-void Delete_value(SqList *L,int e){
+/*void Delete_value(SqList *L,int e){
     if(L->length == 0){
     printf("empty");
     exit(1);
@@ -15,4 +15,4 @@ void Delete_value(SqList *L,int e){
     L->length--;
 
     return 1;
-}
+}*/

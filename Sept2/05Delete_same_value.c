@@ -1,12 +1,24 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAXSIZE 100
+
+typedef struct{
+    int data[MAXSIZE];
+    int length;
+}SqList;
+
 void Delete_same_value(SqList *L){
-    if(L->length == 0) return;
-    int i=0;
-    for(int j=i;j<L->length;j++){
-        if(L->data[j] != L->data[i]){
-            i++;
-            L->data[i] = L->data[j];
+    int i=0,j=0;
+    for(int i = 1;i < L->length;i++){
+        if(L->data[i] != L->data[j]){
+            j++;
+            L->data[j] = L->data[i];
+           
         }
     
     }
-    L->length = i + 1;
+    L->length = j+1;
 }
+
+
+

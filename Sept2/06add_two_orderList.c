@@ -8,28 +8,38 @@ typedef struct{
     int length;
 }SqList;
 
-int Merge_order_List(SqList *L,SqList *T, SqList *Result){
-    if(L->length + T->length > MAXSIZE) {
-        return 0;
+int Merge_two_order_List(SqList *L,SqList *T,SqList *M){
+    int i=0,j=0,k=0;
+  
+    while(i<L->length && j<T->length){
+        if(L->data[i] < T->data[j]){
+        M->data[k] = L->data[i];
+        i++;
+        k++;
     }
-    int i = 0;
-    int j = 0;
-    int k = 0;
+    else{
+        M->data[k] = T->data[j];
+        k++;
+        j++;
 
-    while(i < L->length && j < T->length){
-        if(L->data[i] <= L->data[j]){
-            Result->data[k++]=L->data[i++];
-        }else{
-            Result->data[k++]=T->data[j++];
-        }
     }
+}
+    while(i < L->length){
+        M->data[k] = L->data[i];
+        i++;
+        k++;
+    }
+    
+    while(j < T->length ){
+        M->data[k] = T->data[j];
+        j++;
+        k++;
+    }
+    M->length = k;
+}
+void PrintList(SqList M){
+    for(int i=0;i<M.length;i++){
+        printf("%d ",M.data[i]);
+    }
+}
 
-    while(i<L->length){
-        Result->data[k++]=L->data[i++];
-    }
-
-    while(j<T->length){
-        Result->data[k++]=T->data[j++];
-    }
-    Result->length =k;
-    return 1;
